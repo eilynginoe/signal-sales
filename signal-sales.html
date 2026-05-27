@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal Sales · Caso de Estudio · Eilyn Ginoe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #F5F6F2; color: #1A2E18; -webkit-font-smoothing: antialiased; }
+    :root {
+      --ink: #080F0A; --bg: #F5F6F2; --bg-sage: #EAF0E6; --bg-dark: #0D1E10;
+      --bg-gold: #F8F4E8; --selva: #1A5C35; --selva-lt: #C0E8D0; --selva-mid: #A8D0B4;
+      --selva-dim: #4A6850; --gold: #9A7010; --gold-lt: #C9A84C;
+      --border: #C8D8C0; --border-dk: #1E3820; --muted: #5A6858; --hint: #7A9870;
+      --max: 1100px; --pad: clamp(24px, 5vw, 80px);
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(245,246,242,0.94); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); height: 72px; }
+    .nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-back { display: flex; align-items: center; gap: 8px; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--hint); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--selva); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 20px; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--hint); }
+
+    /* HERO */
+    .case-hero { background: var(--bg-dark); padding: 64px 0 56px; }
+    .case-hero .wrap { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; }
+    .ch-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #2A5A30; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .ch-tag::before { content: ''; width: 16px; height: 0.5px; background: #4A8A58; display: block; }
+    .ch-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: clamp(40px, 5vw, 56px); line-height: 1.0; color: #F5F6F2; margin-bottom: 16px; }
+    .ch-title span { color: var(--gold); }
+    .ch-sub { font-size: 14px; font-weight: 300; line-height: 1.8; color: #5A7860; max-width: 520px; }
+    .ch-sub strong { color: var(--selva-mid); font-weight: 500; }
+    .ch-meta { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
+    .meta-item { padding: 14px 18px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 0.5px solid var(--border-dk); }
+    .meta-label { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: #2A5A30; margin-bottom: 4px; }
+    .meta-value { font-size: 12px; color: var(--selva-mid); font-weight: 500; }
+
+    /* PMV NOTE */
+    .pmv-note {
+      margin-top: 32px;
+      padding: 18px 22px;
+      border-radius: 12px;
+      background: rgba(154,112,16,0.08);
+      border: 1px dashed rgba(154,112,16,0.35);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      max-width: 680px;
+    }
+    .pmv-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+      background: rgba(154,112,16,0.15);
+      color: var(--gold-lt); border: 0.5px solid rgba(201,168,76,0.4);
+      border-radius: 20px; padding: 4px 12px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .pmv-title {
+      font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+      color: var(--gold-lt); letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    .pmv-rows { display: flex; flex-direction: column; gap: 5px; }
+    .pmv-row { display: flex; gap: 8px; align-items: baseline; }
+    .pmv-row-label {
+      font-family: 'Space Mono', monospace; font-size: 8px;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(201,168,76,0.6); flex-shrink: 0; min-width: 80px;
+    }
+    .pmv-row-text { font-size: 11px; color: #6A8870; line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { padding: 56px 0; border-top: 0.5px solid var(--border); }
+    .section:first-of-type { border-top: none; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .eyebrow-line { width: 24px; height: 0.5px; background: var(--selva); flex-shrink: 0; }
+    .eyebrow-text { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--hint); }
+    .s-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 34px; color: var(--ink); line-height: 1.1; margin-bottom: 14px; }
+    .s-body { font-size: 14px; font-weight: 300; line-height: 1.85; color: #4A5A48; }
+    .s-body strong { font-weight: 600; color: var(--ink); }
+
+    /* DIAGNOSIS GRID */
+    .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+    .diag-card { border-radius: 12px; padding: 20px 22px; }
+    .dc-light { background: var(--bg-sage); border: 0.5px solid var(--border); }
+    .dc-dark { background: var(--bg-dark); border: 0.5px solid var(--border-dk); }
+    .dc-gold { background: var(--bg-gold); border: 0.5px solid rgba(154,112,16,0.25); }
+    .dc-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; font-weight: 600}
+    .dcl-g { color: #3A6A48; } .dcl-d { color: #6A8870; } .dcl-go { color: #8A6010; }
+    .dc-text { font-size: 13px; line-height: 1.7; }
+    .dct-l { color: #3A4A38; } .dct-d { color: #6A8870; } .dct-go { color: #4A3A18; }
+
+    /* PRINCIPLES */
+    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .principle { border-radius: 12px; padding: 18px 20px; background: var(--bg); border: 0.5px solid var(--border); }
+    .p-num { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--hint); margin-bottom: 8px; }
+    .p-name { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 3px; }
+    .p-author { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--gold); margin-bottom: 8px; }
+    .p-use { font-size: 11px; line-height: 1.6; color: var(--muted); }
+    .p-signal { font-size: 10px; font-weight: 500; color: var(--selva); margin-top: 8px; padding-top: 8px; border-top: 0.5px solid var(--border); }
+
+    /* FLOW */
+    .flujo { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .fs { border-radius: 12px; padding: 20px; text-align: center; }
+    .fs1 { background: var(--bg-sage); border: 0.5px solid var(--border); }
+    .fs2 { background: var(--bg-dark); border: 0.5px solid var(--border-dk); }
+    .fs3 { background: var(--bg-gold); border: 0.5px solid rgba(154,112,16,0.2); }
+    .fs-time { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .fs1 .fs-time { color: var(--selva); } .fs2 .fs-time { color: var(--selva-mid); } .fs3 .fs-time { color: var(--gold); }
+    .fs-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 18px; margin-bottom: 8px; }
+    .fs1 .fs-name { color: var(--ink); } .fs2 .fs-name { color: #C0E8D0; } .fs3 .fs-name { color: #3A2A08; }
+    .fs-desc { font-size: 11px; line-height: 1.6; }
+    .fs1 .fs-desc { color: #5A7850; } .fs2 .fs-desc { color: var(--selva-dim); } .fs3 .fs-desc { color: #6A5020; }
+
+    /* DECISIONS */
+    .decisions { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+    .decision { display: grid; grid-template-columns: 1fr 28px 1fr; gap: 10px; align-items: center; }
+    .dec-no { padding: 10px 14px; border-radius: 8px; background: rgba(0,0,0,0.04); border: 0.5px solid rgba(0,0,0,0.08); font-size: 11px; color: #888; text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.2); }
+    .dec-arr { text-align: center; color: var(--border); font-size: 14px; }
+    .dec-yes { padding: 10px 14px; border-radius: 8px; background: var(--bg-sage); border: 0.5px solid var(--border); font-size: 11px; color: #2A4A2A; font-weight: 500; }
+    .dec-reason { grid-column: 3; padding: 0 14px 10px; font-size: 10px; color: var(--hint); line-height: 1.5; border-bottom: 0.5px solid #E0E8DC; }
+    .decision:last-child .dec-reason { border-bottom: none; }
+
+    /* QUOTE */
+    .quote-band { background: var(--selva); padding: 48px 0; }
+    .quote-band .wrap { text-align: center; max-width: 800px; }
+    .quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 28px; color: #F5F6F2; line-height: 1.4; margin-bottom: 14px; }
+    .quote-text span { color: var(--gold-lt); }
+    .quote-attr { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #7ABD90; }
+
+    /* NEXT */
+    .next-band { background: var(--bg); border-top: 0.5px solid var(--border); padding: 40px 0; }
+    .next-band .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .next-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--hint); margin-bottom: 6px; }
+    .next-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 24px; color: var(--ink); }
+    .next-btn { display: flex; align-items: center; gap: 10px; background: var(--selva); color: var(--selva-lt); border: none; border-radius: 40px; padding: 12px 28px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; text-decoration: none; white-space: nowrap; }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 24px 0; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 18px; color: #F5F6F2; text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    .footer-copy { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #2A4A2A; }
+
+    @media (max-width: 800px) {
+      .case-hero .wrap { grid-template-columns: 1fr; } .ch-meta { display: none; }
+      .diag-grid, .principles, .flujo { grid-template-columns: 1fr; }
+      .decision { grid-template-columns: 1fr; } .dec-arr { display: none; } .dec-reason { grid-column: 1; }
+      .next-band .wrap { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a href="index.html" class="nav-back">← todos los proyectos</a>
+      <a href="index.html" class="nav-logo">Eilyn <span>Ginoe</span></a>
+      <span class="nav-tag">caso de estudio</span>
+    </div>
+  </nav>
+
+  <section class="case-hero">
+    <div class="wrap">
+      <div>
+        <div class="ch-tag">caso de estudio · hub de desempeño</div>
+        <div class="ch-title">Signal <span>Sales</span></div>
+        <p class="ch-sub">No esperé que un cliente me trajera este problema. Lo identifiqué, lo diagnostiqué y diseñé la solución para demostrar cómo pienso. <strong>Este proyecto no enseña ventas — demuestra cómo intervenir cuando el conocimiento existe pero no está disponible en el momento que más importa.</strong></p>
+
+        <div class="pmv-note">
+          <span class="pmv-badge">PMV funcional</span>
+          <div class="pmv-content">
+            <div class="pmv-title">Prototipo que demuestra el modelo de intervención — diseñado para escalar</div>
+            <div class="pmv-rows">
+              <div class="pmv-row">
+                <span class="pmv-row-label">hoy</span>
+                <span class="pmv-row-text">3 dimensiones por categoría (audiencia, tensión, bloqueo) con scripts de rescate funcionales.</span>
+              </div>
+              <div class="pmv-row">
+                <span class="pmv-row-label">escala con IA</span>
+                <span class="pmv-row-text">Categorías ilimitadas y scripts generados dinámicamente según el contexto específico del vendedor.</span>
+              </div>
+              <div class="pmv-row">
+                <span class="pmv-row-label">pendiente</span>
+                <span class="pmv-row-text">Ajustes de UX/UI y responsividad para entornos móviles.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ch-meta">
+        <div class="meta-item"><div class="meta-label">tipo</div><div class="meta-value">Hub de Desempeño</div></div>
+        <div class="meta-item"><div class="meta-label">audiencia</div><div class="meta-value">Vendedores B2B</div></div>
+        <div class="meta-item"><div class="meta-label">ventana</div><div class="meta-value">3 min pre-reunión</div></div>
+        <div class="meta-item"><div class="meta-label">ejecución</div><div class="meta-value">HTML / CSS / JS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div style="background: var(--bg);">
+
+    <div class="wrap">
+      <div class="section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">pregunta 01 · conducta</span></div>
+        <div class="s-title">¿Qué necesita hacer diferente este vendedor?</div>
+        <p class="s-body">Los programas de formación comercial asumen que el problema es de conocimiento. Pero la pregunta correcta es: <strong>¿por qué un vendedor que ya sabe cómo manejar una objeción no puede hacerlo en la reunión real?</strong> Eso no es un problema de contenido. Es un problema de acceso cognitivo bajo presión.</p>
+        <div class="diag-grid">
+          <div class="diag-card dc-light"><div class="dc-label dcl-g">La respuesta tradicional al problema</div><p class="dc-text dct-l">"Necesitamos un módulo de manejo de objeciones más interactivo."</p></div>
+          <div class="diag-card dc-dark"><div class="dc-label dcl-d">lo que el problema realmente era</div><p class="dc-text dct-d">El vendedor entra en frío. El conocimiento existe — simplemente no está disponible cuando el cerebro más lo necesita.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">pregunta 02 · diagnóstico</span></div>
+        <div class="s-title">¿Qué está bloqueando — y qué ciencia lo explica?</div>
+        <p class="s-body">Bajo presión, la memoria de trabajo se estrecha. El vendedor que intenta recordar un script mientras gestiona la conversación experimenta sobrecarga cognitiva. <strong>No porque no aprendió — porque nadie diseñó el puente entre el curso y el momento de aplicación.</strong></p>
+        <div class="diag-grid" style="grid-template-columns: 1fr;">
+          <div class="diag-card dc-gold"><div class="dc-label dcl-go">el bloqueo identificado</div><p class="dc-text dct-go">La brecha no está en el conocimiento — está en la activación. Entre el curso y la reunión real pasan semanas. Nadie diseña para ese intervalo. El problema es de <strong>arquitectura temporal</strong>, no de contenido.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">pregunta 03 · principios</span></div>
+        <div class="s-title">¿Qué principios científicos desactivan ese bloqueo?</div>
+        <p class="s-body">Cada decisión de diseño descansa sobre un principio verificable — no sobre intuición estética.</p>
+        <div class="principles">
+          <div class="principle"><div class="p-num">01</div><div class="p-name">Pre-suasión</div><div class="p-author">Robert Cialdini, 2016</div><p class="p-use">El estado mental inmediatamente anterior a una decisión es el momento de mayor influencia.</p><div class="p-signal">→ En Signal Sales: la herramienta se usa en los 3 minutos previos. El timing es el mecanismo.</div></div>
+          <div class="principle"><div class="p-num">02</div><div class="p-name">Carga cognitiva</div><div class="p-author">John Sweller, 1988</div><p class="p-use">Bajo presión, la memoria de trabajo se estrecha. La solución es mover el procesamiento fuera del momento crítico.</p><div class="p-signal">→ En Signal Sales: la herramienta procesa antes. Durante la reunión, el vendedor ejecuta.</div></div>
+          <div class="principle"><div class="p-num">03</div><div class="p-name">Priming lingüístico</div><div class="p-author">Tulving & Schacter, 1990</div><p class="p-use">La exposición reciente a un patrón de lenguaje aumenta la fluidez de acceso posterior.</p><div class="p-signal">→ En Signal Sales: el vendedor no memoriza. Lee. Ese acto es la intervención.</div></div>
+          <div class="principle"><div class="p-num">04</div><div class="p-name">Anticipación de riesgo</div><div class="p-author">Janis & Mann, 1977</div><p class="p-use">Nombrar el riesgo antes desactiva la respuesta de amenaza y mantiene el prefrontal activo.</p><div class="p-signal">→ En Signal Sales: el paso 1 obliga a nombrar el bloqueo previsto. Ese acto ya es intervención.</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">pregunta 04 · intervención</span></div>
+        <div class="s-title">¿Cuál es la intervención mínima que activa esos principios?</div>
+        <p class="s-body">Un hub de desempeño de 3 pasos y menos de 3 minutos. No un curso — un andamio que se retira cuando ya no hace falta.</p>
+        <div class="flujo">
+          <div class="fs fs1"><div class="fs-time">30s</div><div class="fs-name">La Anticipación</div><p class="fs-desc">Tres selecciones: perfil de audiencia, tensión detectada, bloqueo previsto. Categorizar la situación ya es intervención cognitiva.</p></div>
+          <div class="fs fs2"><div class="fs-time">90s</div><div class="fs-name">El Ancla Mental</div><p class="fs-desc">Script de rescate con el principio psicológico que lo respalda. Lee en silencio. No memoriza — formatea su cerebro para ese escenario.</p></div>
+          <div class="fs fs3"><div class="fs-time">0</div><div class="fs-name">La Batalla</div><p class="fs-desc">La herramienta se cierra. El vendedor entra con presencia total. Los scripts fluyen — el cerebro acaba de calentar exactamente para eso.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">lo que descarté · y por qué</span></div>
+        <div class="s-title">Un diseñador senior muestra lo que no construyó.</div>
+        <div class="decisions">
+          <div class="decision">
+            <div class="dec-no">Video de repaso</div><div class="dec-arr">→</div><div class="dec-yes">Scripts para leer en silencio</div>
+            <div class="dec-reason">3 minutos disponibles. El video requiere atención sostenida que no existe bajo presión.</div>
+          </div>
+          <div class="decision">
+            <div class="dec-no">Formulario extenso de diagnóstico</div><div class="dec-arr">→</div><div class="dec-yes">3 selecciones categóricas</div>
+            <div class="dec-reason">La fricción destruye la adopción. Categorizar ya es intervención cognitiva de reducción de ansiedad.</div>
+          </div>
+          <div class="decision">
+            <div class="dec-no">Consulta durante la reunión</div><div class="dec-arr">→</div><div class="dec-yes">La herramienta se cierra antes</div>
+            <div class="dec-reason">Dependencia tecnológica durante la conversación fragmenta la presencia y destruye la confianza percibida.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="quote-band">
+    <div class="wrap">
+      <div class="quote-text">"Signal Sales es el <span>calentamiento previo</span> del atleta de alto rendimiento. No lo hace correr más rápido — activa los patrones correctos justo antes de la competencia."</div>
+      <div class="quote-attr">— nota de diseño · Signal Sales</div>
+    </div>
+  </div>
+
+  <div class="next-band">
+    <div class="wrap">
+      <div>
+        <div class="next-label">siguiente caso de estudio</div>
+        <div class="next-title">Auditoría Cisco Python + Ruta Curiosidad</div>
+      </div>
+      <a href="cisco-python.html" class="next-btn">ver caso →</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <a href="index.html" class="footer-logo">Eilyn <span>Ginoe</span></a>
+      <span class="footer-copy">© 2026 · diseñadora de experiencias de aprendizaje</span>
+    </div>
+  </footer>
+
+</body>
+</html>
